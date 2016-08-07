@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>My Angular App</title>
+    <link rel="stylesheet" href="stylesC.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="scriptC.js"></script>
+</head>
+<body>
+<div data-ng-controller="myController">
+    <input type="checkbox" data-ng-model="hideSalary"/> Hide Salary
+    <br /><br />
+    <table>
+        <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Date of Birth
+            </th>
+            <th>
+                Gender
+            </th>
+            <th data-ng-hide="hideSalary">
+                Salary
+            </th>
+            <th data-ng-show="hideSalary">
+                Salary
+            </th>
+            <th>
+                City
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="employee in employees">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.dateOfBirth | date:"dd/MM/yyyy" }}</td>
+            <td>{{ employee.gender }}</td>
+            <td data-ng-hide="hideSalary">{{ employee.salary | currency:"£":2 }}</td>
+            <td data-ng-show="hideSalary"> #### </td>
+            <td>{{ employee.city }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
